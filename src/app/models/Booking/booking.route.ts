@@ -1,9 +1,9 @@
-import express from 'express';
+import { Router } from 'express';
+import { createBooking } from '../Booking/booking.controller';
+import { authMiddleware } from '../../../middleware/authMiddleware';
 
-const router = express.Router();
+const router = Router();
 
-router.route('/').post(protect, createCar).get(getAllCars);
-
-// Add other routes for car (getCar, updateCar, deleteCar)
+router.post('/', authMiddleware, createBooking);
 
 export default router;

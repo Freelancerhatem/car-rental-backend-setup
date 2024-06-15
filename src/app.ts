@@ -1,9 +1,10 @@
 import express, { Application, Request, Response } from 'express';
 import authRoutes from './app/models/User/user.route';
 import carRoutes from './app/models/Car/car.route';
-import bookingRoutes from './app/models/Booking/';
+import bookingRoutes from './app/models/Booking/booking.route';
 
 import cors from 'cors'
+import { handleError } from './utils/handleError';
 const app: Application = express()
 const port = 3000
 
@@ -17,6 +18,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/cars', carRoutes);
 app.use('/api/bookings', bookingRoutes);
 
-app.use(errorHandler);
+app.use(handleError);
 
 export default app

@@ -5,7 +5,7 @@ import Booking from "./booking.model";
 
 export const createBooking = async (req: Request, res: Response) => {
     const { carId, date, startTime } = req.body;
-    const userId = req.user?.id;
+    const userId = req.user?.email;
 
     try {
         const car = await Car.findById(carId);
