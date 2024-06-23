@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Date, Schema } from "mongoose";
 
 export type TBooking = {
     date: Date;
@@ -7,4 +7,5 @@ export type TBooking = {
     startTime: string;
     endTime: string | null;
     totalCost: number;
+
 }

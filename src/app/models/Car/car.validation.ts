@@ -8,3 +8,11 @@ export const carSchema = z.object({
     features: z.array(z.string()),
     pricePerHour: z.number(),
 });
+export const updateCarSchema = z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    color: z.string().optional(),
+    isElectric: z.boolean().optional(),
+    features: z.array(z.string()).optional(),
+    pricePerHour: z.number().optional(),
+});

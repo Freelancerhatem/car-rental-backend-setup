@@ -1,9 +1,13 @@
 import { Router } from 'express';
-import { createBooking } from '../Booking/booking.controller';
-import { authMiddleware } from '../../../middleware/authMiddleware';
+import { createBooking, getAllBookings, getUserBookings } from '../Booking/booking.controller';
+import { admin, protect, user } from '../../../middleware/authMiddleware';
 
 const router = Router();
 
-router.post('/', authMiddleware, createBooking);
+router.route('/')
+    .post(protect, user, createBooking)
+    .get(protect, admin, getAllBookings);
+router.get('/my-bookings', protect, user, getUserBookings);
+
 
 export default router;

@@ -1,4 +1,7 @@
+import { ObjectId } from "mongoose";
+
 export type TUser = {
+    _id: ObjectId
     name: string;
     email: string;
     role: 'user' | 'admin';
