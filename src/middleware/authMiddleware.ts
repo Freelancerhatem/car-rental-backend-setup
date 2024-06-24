@@ -10,6 +10,16 @@ interface AuthRequest extends Request {
 }
 
 export const protect = async (req: AuthRequest, res: Response, next: NextFunction) => {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader) {
+        return res.status(401).json({
+            success: false,
+            statusCode: 401,
+            message: 'You have no access to this route',
+        });
+    }
+
     let token;
 
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
